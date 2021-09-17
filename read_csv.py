@@ -1,7 +1,7 @@
 
 import csv
 
-print ("hello world")
+print ("Iniciando leitura do arquivo")
 
 file = open ("run6.csv")
 
@@ -10,10 +10,11 @@ csvreader = csv.reader(file)
 cabecalho = []
 cabecalho = next(csvreader)
 
-while (cabecalho[0][0] != 'X'):#Procura pela definição dos dados no arquivo.
+while (cabecalho[0][0] != 'X'):   #Procura pela definição dos dados no arquivo.
     cabecalho = next(csvreader)
 
 print(cabecalho)
+# print(n_variables)
 
 rows = []
 for row in csvreader:
