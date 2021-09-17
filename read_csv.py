@@ -3,7 +3,7 @@ import csv
 
 print ("Iniciando leitura do arquivo")
 
-file = open ("run6.csv")
+file = open ("run8.csv")
 
 csvreader = csv.reader(file)
 
