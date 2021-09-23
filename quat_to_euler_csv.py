@@ -36,7 +36,7 @@ def quartenion_to_euler (QX, QY, QZ, QW):
 def main ():
     print("begin")
 
-    file = open("run8.csv") 
+    file = open("teste_quat.csv") 
 
     csvreader = csv.reader(file)
 
@@ -112,25 +112,25 @@ def main ():
         EulerY.append(PitchY*180/math.pi)
         EulerZ.append(YawZ*180/math.pi)
 
-    # plt.figure()
-    # plt.plot(QuatW_time, EulerX, label='Euler X')
-    # plt.legend()
-    # plt.grid()
-    # plt.show()
+    plt.figure()
+    plt.plot(Euler_time, EulerX, label='Euler X')
+    plt.legend()
+    plt.grid()
+    plt.show()
 
-    # plt.figure()
-    # plt.plot(QuatW_time, EulerY, label='Euler Y')
-    # plt.legend()
-    # plt.grid()
-    # plt.show()
+    plt.figure()
+    plt.plot(Euler_time, EulerY, label='Euler Y')
+    plt.legend()
+    plt.grid()
+    plt.show()
 
-    # plt.figure()
-    # plt.plot(QuatW_time, EulerZ, label='Euler Z')
-    # plt.legend()
-    # plt.grid()
-    # plt.show()
+    plt.figure()
+    plt.plot(Euler_time, EulerZ, label='Euler Z')
+    plt.legend()
+    plt.grid()
+    plt.show()
 
-    new_csv = open('run_converted.csv', 'w', newline= '')
+    new_csv = open('teste_convertido.csv', 'w', newline= '')
     # create the csv writer
     writer = csv.writer(new_csv)
     cabecalho = ['X[s]', 'Avanti Sensor 1: Roll 1 [degrees]', 'X[s]', 'Avanti Sensor 1: Pitch 1 [degrees]', 'X[s]', 'Avanti Sensor 1: Yaw 1 [degrees]']
