@@ -8,7 +8,7 @@ import math
 
 print ("Iniciando leitura do arquivo")
 
-file = open ("run8.csv")
+file = open ("teste_quat.csv")
 
 csvreader = csv.reader(file)
 
