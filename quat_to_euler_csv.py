@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 ### 
 ###     Programa para converter os dados em um arquivo CSV de Quaternion para Euler       
 ###     
@@ -58,7 +59,7 @@ def main ():
     QuatX_value = []
     QuatY_value = []
     QuatZ_value = []
-    QuatAcc_value = []
+    # QuatAcc_value = []
 
     QuatW_time = []
     QuatX_time = []
@@ -130,7 +131,7 @@ def main ():
     plt.grid()
     plt.show()
 
-    new_csv = open('teste_convertido.csv', 'w', newline= '')
+    new_csv = open('teste_convertido.csv', 'w', newline = '')
     # create the csv writer
     writer = csv.writer(new_csv)
     cabecalho = ['X[s]', 'Avanti Sensor 1: Roll 1 [degrees]', 'X[s]', 'Avanti Sensor 1: Pitch 1 [degrees]', 'X[s]', 'Avanti Sensor 1: Yaw 1 [degrees]']
