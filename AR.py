@@ -36,14 +36,22 @@ def main ():
     # roll_y = np.array(roll_y)
     # yaw_z = np.array(yaw_z)
 
-    series = read_csv('run6.csv', header=32, usecols=[0, 1], dtype={'X[s]': np.float64, 'Avanti Sensor 1: EMG 1 [V]': np.float64}, index_col=0)
+    # series = read_csv('run6.csv', header=32, usecols=[0, 1], dtype={'X[s]': np.float64, 'Avanti Sensor 1: EMG 1 [V]': np.float64}, index_col=0)
+    series = read_csv('run8.csv', header=46, index_col=0, usecols=[0, 1])
+    # emg = np.column_stack((series.index.to_numpy(), series.to_numpy()))
+    # print(emg)
+    series.index = pd.to_datetime(series.index, unit='ms')
+    series.index = pd.DatetimeIndex(series.index, freq=series.index.inferred_freq) 
+    #To do: Fix Index to correct date
+    # print(series.index)
     # print(series.head())
-    # series.plot()
-    # pyplot.legend(['EMG (V)'])
-    # pyplot.show()
 
-    emg = np.column_stack((series.index.to_numpy(), series.to_numpy()))
-    print(emg)
+    series.plot()
+    pyplot.legend(['EMG (V)'])
+    pyplot.show()
+
+    print("---------------------------------------------------------------------------------")
+
     autocorrelation_plot(series)
     pyplot.show()
 
