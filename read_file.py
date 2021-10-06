@@ -4,7 +4,7 @@ import numpy as np
 import math
 
 
-def read_csv():
+def read_csv_to_array():
 
     print ("Iniciando leitura do arquivo")
 
@@ -18,7 +18,7 @@ def read_csv():
     while (cabecalho[0][0] != 'X'):   #Procura pela definição dos dados no arquivo.
         cabecalho = next(csvreader)
 
-    print(cabecalho)
+    # print(cabecalho)
     # n_variables = (len(cabecalho))
     # print(n_variables)
 
@@ -80,3 +80,24 @@ def read_csv():
     YawZ_value = np.array(YawZ_value_list)
 
     return emg_time, emg_value, Orientation_time, PitchX_value, RollY_value, YawZ_value
+
+def main ():
+
+    eT = []
+    eV = []
+    oT = []
+    x = []
+    y = []
+    z = []
+    eT, eV, oT, x, y, z = read_csv_to_array()    
+    eT = np.array(eT)
+    eV = np.array(eV)
+    oT = np.array(oT)
+    x = np.array(x)
+    y = np.array(y)
+    z = np.array(z)
+
+    print (eV)
+
+if __name__ == '__main__': # chamada da funcao principal
+    main()
