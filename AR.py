@@ -8,6 +8,7 @@ import csv
 import numpy as np
 import math
 from read_file import read_csv_to_array
+import pandas as pd
 from pandas import datetime
 from pandas import read_csv
 from pandas import DataFrame
@@ -55,17 +56,17 @@ def main ():
     autocorrelation_plot(series)
     pyplot.show()
 
-    # model = ARIMA(series, order=(4,0,0))
-    # model_fit = model.fit()
-    # print(model_fit.summary())
+    model = ARIMA(series, order=(7,1,0))
+    model_fit = model.fit()
+    print(model_fit.summary())
 
-    # residuals = DataFrame(model_fit.resid)
-    # residuals.plot()
-    # pyplot.show()
-    # residuals.plot(kind='kde')
-    # pyplot.show()
-    # # summary stats of residuals
-    # print(residuals.describe())
+    residuals = DataFrame(model_fit.resid)
+    residuals.plot()
+    pyplot.show()
+    residuals.plot(kind='kde')
+    pyplot.show()
+    # summary stats of residuals
+    print(residuals.describe())
 
 
 if __name__ == '__main__': # chamada da funcao principal
