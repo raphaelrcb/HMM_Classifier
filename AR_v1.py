@@ -7,9 +7,8 @@
 import csv
 import numpy as np
 import math
-from read_file import read_csv_to_array
+# from read_file import read_csv_to_array
 import pandas as pd
-from pandas import datetime
 from pandas import read_csv
 from pandas import DataFrame
 from statsmodels.tsa.arima.model import ARIMA
@@ -41,8 +40,12 @@ def main ():
     series = read_csv('run8.csv', header=46, index_col=0, usecols=[0, 1])
     # emg = np.column_stack((series.index.to_numpy(), series.to_numpy()))
     # print(emg)
-    series.index = pd.to_datetime(series.index, unit='ms')
-    series.index = pd.DatetimeIndex(series.index, freq=series.index.inferred_freq) 
+    series.index = pd.to_datetime(series.index, unit = 's', origin= 'unix') #Convert index to date time 
+    series.index = series.index.map(lambda t: t.replace(year=2021, month=10, day=12, hour=10)) #fix date 
+    # series.index = pd.DatetimeIndex(series.index, freq=series.index.inferred_freq) 
+    series.index = pd.DatetimeIndex(series.index).to_period('L')                                #define period
+    series.index
+
     #To do: Fix Index to correct date
     # print(series.index)
     # print(series.head())
