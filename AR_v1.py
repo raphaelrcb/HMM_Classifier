@@ -57,11 +57,43 @@ def main ():
     pyplot.show()
 
     print("---------------------------------------------------------------------------------")
+    print("--------------------------------segmenting data----------------------------------")
+    print("---------------------------------------------------------------------------------")
 
-    autocorrelation_plot(series)
+    data_size = len(series)
+    window_size = 250
+    window_overlap = 50
+    n_windows = (data_size - window_size)/window_overlap + 1
+
+    osw = []
+    for i in range(int(n_windows)):
+        osw.append( series[(i*window_overlap):(i*window_overlap + window_size)])
+
+    print(osw[0].head())
+    osw[0].plot()
+    pyplot.legend(['EMG (V)'])
+    pyplot.show()
+    print(osw[1].head())
+    print(osw[228].head())
+    osw[228].plot()
+    pyplot.legend(['EMG (V)'])
+    pyplot.show()
+    print(osw[229].head())
+    print(osw[426].head())
+    print(osw[427].head())
+    osw[427].plot()
+    pyplot.legend(['EMG (V)'])
     pyplot.show()
 
-    model = ARIMA(series, order=(7,1,0))
+
+    print("---------------------------------------------------------------------------------")
+    print("-------------------------------feature extraction--------------------------------")
+    print("---------------------------------------------------------------------------------")
+
+    autocorrelation_plot(osw[1])
+    pyplot.show()
+
+    model = ARIMA(osw[0], order=(4,0,0))
     model_fit = model.fit()
     print(model_fit.summary())
 
