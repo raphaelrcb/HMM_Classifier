@@ -4,9 +4,9 @@
 ###     Lógica a ser usada em cósgis futuros
 ###
 
-import csv
-import numpy as np
-import math
+# import csv
+# import numpy as np
+# import math
 # from read_file import read_csv_to_array
 import pandas as pd
 from pandas import read_csv
@@ -37,12 +37,14 @@ def main ():
     # yaw_z = np.array(yaw_z)
 
     # series = read_csv('run6.csv', header=32, usecols=[0, 1], dtype={'X[s]': np.float64, 'Avanti Sensor 1: EMG 1 [V]': np.float64}, index_col=0)
-    series = read_csv('run8.csv', header=46, index_col=0, usecols=[0, 1])
+    print("---------------------------------------------------------------------------------")
+    print("--------------------------------collectin data-----------------------------------")
+    print("---------------------------------------------------------------------------------")
+    series = read_csv('run6.csv', header=32, index_col=0, usecols=[0, 1])
     # emg = np.column_stack((series.index.to_numpy(), series.to_numpy()))
     # print(emg)
     series.index = pd.to_datetime(series.index, unit = 's', origin= 'unix') #Convert index to date time 
     series.index = series.index.map(lambda t: t.replace(year=2021, month=10, day=12, hour=10)) #fix date 
-    # series.index = pd.DatetimeIndex(series.index, freq=series.index.inferred_freq) 
     series.index = pd.DatetimeIndex(series.index).to_period('L')                                #define period
     series.index
 
