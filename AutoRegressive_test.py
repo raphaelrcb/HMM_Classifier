@@ -24,7 +24,7 @@ def main ():
     print("---------------------------------------------------------------------------------")
 
 #   series = read_csv('run8.csv', header=42, index_col=0, usecols=[0, 1])
-    series = read_csv('run6.csv', header=32, index_col=0, usecols=[0, 1])
+    series = read_csv('data/run6.csv', header=32, index_col=0, usecols=[0, 1])
 
     #Indexing dataframe correctly
 
